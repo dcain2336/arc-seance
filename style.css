@@ -1,0 +1,80 @@
+/* ARC Séance — CRT stylesheet. */
+/* Green phosphor on black, with scanlines, like an old terminal. */
+
+/* Style the whole page: black background, green text, monospace font. */
+body {
+  background: #000;
+  color: #33ff66;
+  font-family: "Courier New", monospace;
+  margin: 0;
+  padding: 16px;
+}
+
+/* Center the terminal and keep it readable on wide screens. */
+.crt {
+  max-width: 860px;
+  margin: 0 auto;
+  border: 2px solid #33ff66;
+  padding: 16px;
+  /* Scanlines: thin dark stripes over the whole terminal. */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.25) 3px
+  );
+}
+
+/* Make the title glow softly, like old phosphor. */
+h1 {
+  text-shadow: 0 0 8px #33ff66;
+  letter-spacing: 4px;
+  margin: 0 0 4px 0;
+}
+
+/* Keep the subtitle small and calm. */
+header p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+
+/* Give the screen a fixed height with scrolling for long sessions. */
+#screen {
+  min-height: 340px;
+  max-height: 520px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* Keep the input row on one line, prompt beside the box. */
+.input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Make the prompt bold so it is easy to spot. */
+.prompt {
+  font-weight: bold;
+}
+
+/* Style the typing box to match the terminal: black, green, no border. */
+#cmd {
+  flex: 1;
+  background: #000;
+  color: #33ff66;
+  border: none;
+  border-bottom: 1px solid #33ff66;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Keep the footer small and quiet at the bottom. */
+footer {
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.7;
+}

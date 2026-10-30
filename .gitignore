@@ -1,0 +1,6 @@
+# ARC Séance gitignore.
+# NOTE: .kiro/ is deliberately NOT ignored here. The Kiroween rules
+# require the /.kiro directory at the repo root, visible to judges.
+__pycache__/
+*.pyc
+.DS_Store

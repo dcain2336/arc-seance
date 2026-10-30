@@ -1,0 +1,1 @@
+{"action":{"command":"python3 -m unittest discover -s tests -v","type":"command"},"description":"Run the Python test suite whenever a Python file is saved, so a broken change is caught at once.","matcher":".*\\.py$","name":"seance-test-on-save","trigger":"PostFileSave"}

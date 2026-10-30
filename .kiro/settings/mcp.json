@@ -1,0 +1,1 @@
+{"mcpServers":{"seance":{"args":["mcp/seance_mcp.py"],"autoApprove":["summon_spirit","door_game_move","read_ticker","irc_say"],"command":"python3","disabled":false,"env":{}}}}

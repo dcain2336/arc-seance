@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- ARC Séance — the web terminal face. Open this file in a browser. -->
+<!-- No build step, no framework, no key, no backend. -->
+<html lang="en">
+<head>
+<!-- Set the character encoding, so spooky text renders correctly. -->
+<meta charset="utf-8">
+<!-- Make the page scale on phones as well as desktops. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Give the page a title for the browser tab. -->
+<title>ARC Séance — a haunted terminal</title>
+<!-- Load the CRT stylesheet for the phosphor look. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- The outer frame holds the whole terminal screen. -->
+<main class="crt">
+<!-- The header names the machine and its purpose. -->
+<header>
+<h1>ARC SÉANCE</h1>
+<!-- The subtitle explains the chimera in one line. -->
+<p>BBS door games + IRC + RSS, stitched together. Type <code>help</code>.</p>
+</header>
+<!-- The screen is where every printed line appears. -->
+<div id="screen" aria-live="polite"></div>
+<!-- The input row holds the prompt and the typing box. -->
+<div class="input-row">
+<!-- The prompt character marks where to type. -->
+<span class="prompt">&gt;</span>
+<!-- The input box reads one command at a time. -->
+<input id="cmd" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command">
+</div>
+<!-- The footer states the honesty rule about data. -->
+<footer>Free, no account, no backend. Ticker data shows its source and date.</footer>
+</main>
+<!-- Load the terminal logic after the page elements exist. -->
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"action":{"command":"node --check app.js","type":"command"},"description":"Syntax-check the web script whenever it is saved, so a typo never reaches the demo.","matcher":"app\\.js$","name":"seance-syntax-on-save","trigger":"PostFileSave"}

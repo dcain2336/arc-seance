@@ -52,7 +52,7 @@ JavaScript, Python 3 standard library only.
 ## Links (fill in at submit time)
 
 - GitHub repo (public, MIT license, /.kiro at root, not gitignored):
-  [REPO URL]
+  https://github.com/dcain2336/arc-seance
 - Demo video (public YouTube, under 3 minutes): [DEMO URL]
 - Functional app URL: the repo itself — open index.html, or run the
   Python twin. No login, no credentials needed for judges.

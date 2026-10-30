@@ -68,6 +68,58 @@ turn "Kiro-shaped, hand-built" into "Kiro AI used in the build", and
 the write-up above should be updated to say so before submission if
 that session happens. Until then, this page stands as written.
 
+## Update — Oct 30, 2026: the logged-in Kiro session happened (one task)
+
+The step described in the section above has now happened, and that
+section is preserved above as the pre-login record. What follows is
+what changed, and what did not.
+
+- **Login succeeded Oct 30, 2026**, via `kiro-cli login
+  --use-device-flow`, completed in a browser by the account owner.
+  Verified afterwards in this environment: `kiro-cli whoami`
+  prints "Logged in with Builder ID, Email:
+  arc-agent-ops@proton.me", and `kiro-cli agent list` works
+  (it previously refused with "not logged in").
+- **One real Kiro CLI chat task was run**, non-interactively:
+  `kiro-cli chat --no-interactive --trust-all-tools`, asked to
+  review `app.js` against `.kiro/specs/arc-seance/requirements.md`
+  (especially Requirement 1 and Requirement 5) and to apply
+  exactly ONE small, genuine improvement to `app.js` only, with
+  no other file touched and nothing committed by the chat itself.
+- **What Kiro's AI found and changed:** a real honesty bug in the
+  `summon()` function. A topic made only of short words (for
+  example "go" or "it") yields zero matchable words after the
+  longer-than-two-characters filter, so the headline loop could
+  never match — yet the code still labelled the fallback
+  "(loose match)". The fix wraps the headline-matching loop and
+  the loose-match fallback in `if (words.length > 0)`; when the
+  topic has no matchable words, the briefing now falls through
+  to the existing no-headlines message instead of claiming a
+  loose match. File changed: `app.js` only (17 insertions, 12
+  deletions, plain-English comments kept). Commit:
+  `ba2311f` ("Kiro CLI review fix: do not label empty-topic
+  seance as a loose match"), pushed to `main`. Verified after
+  the change: `node --check app.js` clean, Python test suite
+  still 13/13 passing.
+- **One wording note, stated plainly:** in the empty-topic case
+  the briefing now uses the existing no-headlines message even
+  when headlines exist. The false loose-match label is gone;
+  that wording is the remaining imprecision in this corner case.
+- **What Kiro's AI did NOT do:** it did not write the bulk of
+  this app. Every other file, and the rest of `app.js`, was
+  written earlier on Oct 30, 2026 by following the Kiro spec by
+  hand, before this login existed. This session contributed
+  exactly one fix to one file. It did not commit or push
+  anything itself; the commit and push were done by the ARC
+  agent after verifying the change. The demo video, the repo,
+  and the submission pack were already complete before this
+  session.
+
+So the honest summary now reads: Kiro's spec, steering, hooks,
+custom agent, and MCP shaped the build; the bulk of the code was
+written by hand against that spec; and Kiro's own AI, once logged
+in, reviewed the code and contributed one real, committed fix.
+
 ## Verification performed (reproducible)
 
 - `python3 -m unittest discover -s tests -v` — 13 tests, all passing.

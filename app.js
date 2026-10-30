@@ -224,19 +224,24 @@ function summon(topic) {
   const words = low.split(/\s+/).filter((w) => w.length > 2);
   // Default to no headline match yet.
   let headline = null;
-  // Walk through ticker headlines, looking for a topic word in the title.
-  for (const item of state.ticker) {
-    // Check whether any topic word appears in this headline title.
-    if (words.some((w) => item.title.toLowerCase().includes(w))) {
-      // Keep the first matching headline and stop looking.
-      headline = item.title;
-      break;
+  // Only attempt matching when the topic has at least one matchable word;
+  // a topic made entirely of short words (≤ 2 chars) has nothing to match,
+  // so skipping the loop avoids labelling that case as a "loose match".
+  if (words.length > 0) {
+    // Walk through ticker headlines, looking for a topic word in the title.
+    for (const item of state.ticker) {
+      // Check whether any topic word appears in this headline title.
+      if (words.some((w) => item.title.toLowerCase().includes(w))) {
+        // Keep the first matching headline and stop looking.
+        headline = item.title;
+        break;
+      }
     }
-  }
-  // If no headline matched, fall back to the first headline, honestly.
-  if (headline === null && state.ticker.length) {
-    // Note the loose match plainly, never pretend it matched.
-    headline = `(loose match) ${state.ticker[0].title}`;
+    // If words existed but none matched, fall back to the first headline, honestly.
+    if (headline === null && state.ticker.length) {
+      // Note the loose match plainly, never pretend it matched.
+      headline = `(loose match) ${state.ticker[0].title}`;
+    }
   }
   // If the ticker is empty, say so plainly instead of inventing one.
   if (headline === null) headline = "(no ticker headlines available)";
